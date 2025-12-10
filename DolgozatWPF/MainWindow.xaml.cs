@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.IO;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -37,6 +38,18 @@ namespace DolgozatWPF
         public MainWindow()
         {
             InitializeComponent();
+
+            var sorok = File.ReadAllLines("dolgozatok.txt").Skip(1);
+            foreach (var sor in sorok)
+            {
+                string[] darabok = sor.Split(";");
+                string neve = darabok[0];
+                int eletkora = int.Parse(darabok[1]);
+                int pontszama = int.Parse(darabok[2]);
+                dolgozatok.Add(new Dolgozat ( neve, eletkora, pontszama));
+            }
+
+            dataGrid.ItemsSource = dolgozatok;
         }
     }
 }
