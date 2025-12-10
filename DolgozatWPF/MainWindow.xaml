@@ -22,7 +22,7 @@
             <TextBox x:Name="pontszam" Width="50" Height="20" Margin="5"/>
         </StackPanel>
         <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="5">
-            <Button Content="Hozzáadás" Width="100" Margin="5" Padding="3"/>
+            <Button Content="Hozzáadás" Width="100" Margin="5" Padding="3" Click="hozzaAdas"/>
             <Button Content="Mentés" Width="100" Margin="5" Padding="3"/>
         </StackPanel>
     </Grid>
