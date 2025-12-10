@@ -69,8 +69,34 @@ namespace DolgozatWPF
             {
                 MessageBox.Show("Nem jó!");
             }
+        }
 
+        private void mentes(object sender, RoutedEventArgs e)
+        {
+            if (dolgozatok == null)
+            {
+                MessageBox.Show("Nincsenek dolgozatok.", "hiba", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            string file = "";
+            foreach (var d in dolgozatok)
+            {
+                file += d.Nev + ";" + d.Eletkor + ";" + d.Pontszam + "\n";                
+            }
+            try
+            {
+                File.WriteAllText("dolgozatok.txt", file);
+                MessageBox.Show("Sikeres mentés.", "Mentés", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch(ArgumentException ae)
+            {
+                MessageBox.Show("Nem megfelelő argumentum.", "hiba", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
 
+            catch (IOException ioe)
+            {
+                MessageBox.Show("Hibás fájlnév vagy elérési út.", "hiba", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }
